@@ -1,0 +1,58 @@
+# Compiled class files
+*.class
+
+# Maven build output
+target/
+!.mvn/wrapper/maven-wrapper.jar
+
+# Package files
+*.jar
+*.war
+*.ear
+
+# Logs
+*.log
+
+# Spring Boot generated files
+spring.log
+
+# IDE files
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Eclipse
+.classpath
+.project
+.settings/
+.factorypath
+
+# VS Code
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment / Config secrets
+.env
+*.env
+
+# Application properties with secrets
+application-local.properties
+application-secret.properties
+
+# Temporary files
+*.tmp
+*.temp
+
+# H2 database files (if using local H2)
+*.mv.db
+*.trace.db
+
+# Docker overrides
+docker-compose.override.yml
+
+# Lombok generated files
+lombok.config

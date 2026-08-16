@@ -1,0 +1,15 @@
+FROM eclipse-temurin:21-jdk-alpine AS builder
+WORKDIR /build
+COPY pom.xml .
+COPY src ./src
+RUN apk add --no-cache maven && mvn dependency:go-offline -q
+RUN mvn package -DskipTests -q
+
+FROM eclipse-temurin:21-jre-alpine AS runtime
+WORKDIR /app
+RUN addgroup -S friendchat && adduser -S friendchat -G friendchat
+USER friendchat
+COPY --from=builder /build/target/friendchat-backend-*.jar app.jar
+ENV JAVA_OPTS="-XX:+UseContainerSupport -XX:MaxRAMPercentage=75.0 -XX:+UseG1GC -XX:+ExitOnOutOfMemoryError"
+EXPOSE 8080
+ENTRYPOINT ["sh", "-c", "java $JAVA_OPTS -jar app.jar"]

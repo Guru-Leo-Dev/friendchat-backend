@@ -1,0 +1,34 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:friendchat_test;DB_CLOSE_DELAY=-1;MODE=MySQL
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: false
+
+  flyway:
+    enabled: false
+
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
+app:
+  jwt:
+    secret: test-secret-key-must-be-at-least-512-bits-long-for-hmac-sha-friendchat-backend
+    access-token-expiration: 900
+    refresh-token-expiration: 86400
+  google:
+    client-id: test-google-client-id
+  aws:
+    region: us-east-1
+    s3-bucket: test-bucket
+  cors:
+    allowed-origins:
+      - http://localhost:3000
