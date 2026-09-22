@@ -87,7 +87,7 @@ app:
 
 # ── Server ───────────────────────────────────────────────────────────────────
 server:
-  port: ${SERVER_PORT:8080}
+  port: ${SERVER_PORT:8090}
   compression:
     enabled: true
     mime-types: application/json,application/javascript,text/css
